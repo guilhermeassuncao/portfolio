@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfólio de Guilherme Assunção, Desenvolvedor FullStack com foco em freelances web." />
+  <title>Guilherme Assunção | FullStack Freelancer</title>
+  <style>
+    :root {
+      --green: #66f859;
+      --orange: #f8b659;
+      --pink: #f859a8;
+      --purple: #7359f8;
+      --red: #f87359;
+      --code-background: #22212c;
+      --code-foreground: #f8f8f2;
+
+      --bg: #0d0c12;
+      --surface: #15141b;
+      --surface-2: #1b1a22;
+      --text: #f5f7ff;
+      --muted: #a9adc4;
+      --border: #2b2937;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(circle at 80% -10%, rgba(115, 89, 248, 0.18), transparent 38%),
+                  radial-gradient(circle at 15% 20%, rgba(248, 89, 168, 0.1), transparent 36%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: 4.5rem 0;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      padding: .3rem .75rem;
+      border-radius: 999px;
+      font-size: .75rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: rgba(115, 89, 248, 0.15);
+      color: var(--code-foreground);
+      border: 1px solid rgba(115, 89, 248, .4);
+      margin-bottom: .8rem;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    h1 {
+      font-size: clamp(2rem, 8vw, 3.8rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      font-size: clamp(1.55rem, 4.8vw, 2.5rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: .8rem;
+    }
+
+    p { color: var(--muted); }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      border-radius: .7rem;
+      border: 1px solid transparent;
+      padding: .76rem 1.05rem;
+      font-weight: 700;
+      font-size: .95rem;
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background-color .22s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn:focus-visible,
+    .menu-btn:focus-visible,
+    .link-chip:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--purple), #8d6fff);
+      color: #fff;
+      box-shadow: 0 10px 26px rgba(115, 89, 248, .35);
+    }
+
+    .btn-primary:hover { box-shadow: 0 12px 32px rgba(115, 89, 248, .45); }
+
+    .btn-ghost {
+      border-color: var(--border);
+      background: rgba(255, 255, 255, .02);
+      color: var(--text);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--pink);
+      box-shadow: inset 0 0 0 1px rgba(248, 89, 168, .3);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      border-bottom: 1px solid rgba(255, 255, 255, .05);
+      backdrop-filter: blur(10px);
+      background: rgba(13, 12, 18, .74);
+    }
+
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      max-width: clamp(160px, 28vw, 220px);
+    }
+
+    .brand svg { width: 100%; height: auto; display: block; }
+
+    .menu-btn {
+      display: inline-flex;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: .6rem;
+      padding: .5rem .7rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: none;
+      position: absolute;
+      right: 4%;
+      top: 80px;
+      width: min(250px, 90vw);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: .9rem;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, .35);
+    }
+
+    nav ul.open { display: block; }
+
+    nav li a {
+      display: block;
+      padding: .9rem 1rem;
+      color: var(--muted);
+      border-bottom: 1px solid rgba(255, 255, 255, .04);
+      transition: color .2s ease, background .2s ease;
+    }
+
+    nav li:last-child a { border-bottom: 0; }
+    nav li a:hover { color: var(--text); background: rgba(255, 255, 255, .02); }
+
+    .desktop-cta { display: none; }
+
+    .hero {
+      padding-top: 6rem;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 1.6rem;
+    }
+
+    .hero p {
+      max-width: 60ch;
+      margin-top: .9rem;
+      font-size: clamp(.98rem, 3.2vw, 1.18rem);
+    }
+
+    .hero-actions {
+      margin-top: 1.4rem;
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      min-height: 220px;
+      border: 1px solid var(--border);
+      border-radius: 1.1rem;
+      background: linear-gradient(130deg, rgba(102, 248, 89, .1), rgba(115, 89, 248, .12), rgba(248, 89, 168, .1));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-visual::before,
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-visual::before {
+      background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(circle at center, #000 40%, transparent 78%);
+    }
+
+    .hero-visual::after {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(115, 89, 248, .45), transparent 68%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%,100% { opacity: .6; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.06); }
+    }
+
+    .grid-2 {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.02), transparent), var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1rem;
+      transition: border-color .22s ease, transform .22s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(115, 89, 248, .7);
+      transform: translateY(-3px);
+    }
+
+    .stack,
+    .skills-list {
+      display: flex;
+      gap: .45rem;
+      flex-wrap: wrap;
+      margin-top: .8rem;
+    }
+
+    .chip {
+      font-size: .78rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: .28rem .58rem;
+      color: var(--code-foreground);
+      background: rgba(255,255,255,.02);
+    }
+
+    .skill-col h3,
+    .project-card h3,
+    .service-card h3,
+    .diff-card h3 {
+      margin-bottom: .45rem;
+      font-size: 1.1rem;
+    }
+
+    .snippet {
+      margin-top: 1.2rem;
+      background: var(--code-background);
+      color: var(--code-foreground);
+      border-radius: .9rem;
+      padding: 1rem;
+      border: 1px solid #353346;
+      overflow-x: auto;
+    }
+
+    .snippet code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: .86rem; }
+
+    .placeholder-image {
+      margin-top: .9rem;
+      border: 1px dashed rgba(255,255,255,.22);
+      border-radius: .75rem;
+      padding: .85rem;
+      color: #b7bacd;
+      font-size: .85rem;
+      background: rgba(255,255,255,.015);
+    }
+
+    .project-card .actions {
+      margin-top: .85rem;
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+
+    .flow {
+      margin-top: 1rem;
+      border-left: 2px solid var(--purple);
+      padding-left: .9rem;
+      color: var(--code-foreground);
+      font-size: .94rem;
+    }
+
+    .differentials {
+      display: grid;
+      gap: .75rem;
+    }
+
+    .diff-card {
+      display: flex;
+      gap: .75rem;
+      align-items: flex-start;
+    }
+
+    .dot {
+      margin-top: .3rem;
+      width: .62rem;
+      height: .62rem;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 5px rgba(102,248,89,.12);
+      flex-shrink: 0;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem;
+      margin: .9rem 0 1.2rem;
+    }
+
+    .link-chip {
+      border: 1px solid var(--border);
+      border-radius: .6rem;
+      padding: .55rem .75rem;
+      color: var(--code-foreground);
+      transition: border-color .2s ease, background-color .2s ease;
+    }
+
+    .link-chip:hover {
+      border-color: var(--purple);
+      background: rgba(115,89,248,.12);
+    }
+
+    form {
+      display: grid;
+      gap: .75rem;
+    }
+
+    label { font-size: .9rem; color: #d5d8e8; }
+
+    input, textarea {
+      width: 100%;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: .65rem;
+      color: var(--text);
+      padding: .7rem .78rem;
+      font: inherit;
+    }
+
+    textarea { min-height: 130px; resize: vertical; }
+
+    footer {
+      padding: 2rem 0 2.4rem;
+      border-top: 1px solid rgba(255,255,255,.07);
+      margin-top: 2.4rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      align-items: center;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: .8rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    @media (min-width: 760px) {
+      .menu-btn { display: none; }
+      nav ul {
+        position: static;
+        width: auto;
+        display: flex;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        align-items: center;
+        gap: .2rem;
+      }
+      nav li a {
+        border: 0;
+        border-radius: .45rem;
+        padding: .55rem .65rem;
+      }
+      .desktop-cta { display: inline-flex; }
+      .hero-grid,
+      .grid-2 {
+        grid-template-columns: 1.2fr 1fr;
+        align-items: center;
+      }
+      .skills-grid,
+      .projects-grid,
+      .services-grid,
+      .differentials {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+      .footer-inner { flex-direction: row; justify-content: space-between; text-align: left; }
+    }
+
+    @media (min-width: 1020px) {
+      .projects-grid,
+      .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .differentials { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .section { padding: 5.8rem 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" aria-label="Cabeçalho principal">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Ir para início">
+        <svg width="385" height="94" viewBox="0 0 385 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M26.22 55.68C26.3 55.92 26.34 56.2 26.34 56.52C26.38 56.84 26.4 57.14 26.4 57.42C26.4 58.14 26.32 58.82 26.16 59.46C26 60.1 25.74 60.66 25.38 61.14C25.02 61.62 24.54 62.02 23.94 62.34C23.38 62.62 22.66 62.76 21.78 62.76C20.94 62.76 20.1 62.58 19.26 62.22C18.46 61.86 17.46 61.34 16.26 60.66L3.36 53.22C2.32 51.86 1.8 50.06 1.8 47.82C1.8 46.14 2.04 44.84 2.52 43.92C3 43 3.7 42.28 4.62 41.76L21.12 32.16C23.08 32.68 24.4 33.4 25.08 34.32C25.8 35.2 26.16 36.16 26.16 37.2C26.16 38.6 25.8 39.7 25.08 40.5C24.4 41.26 23.38 41.98 22.02 42.66L11.46 48L26.22 55.68ZM357.821 39.24C357.741 39 357.681 38.72 357.641 38.4C357.641 38.08 357.641 37.78 357.641 37.5C357.641 36.78 357.721 36.1 357.881 35.46C358.041 34.82 358.301 34.26 358.661 33.78C359.021 33.3 359.481 32.92 360.041 32.64C360.641 32.32 361.381 32.16 362.261 32.16C363.101 32.16 363.921 32.34 364.721 32.7C365.561 33.06 366.581 33.58 367.781 34.26L380.681 41.7C381.721 43.06 382.241 44.86 382.241 47.1C382.241 48.78 382.001 50.08 381.521 51C381.041 51.92 380.341 52.64 379.421 53.16L362.921 62.76C360.961 62.24 359.621 61.54 358.901 60.66C358.221 59.74 357.881 58.76 357.881 57.72C357.881 56.32 358.221 55.24 358.901 54.48C359.621 53.68 360.661 52.94 362.021 52.26L372.581 46.92L357.821 39.24Z" fill="#7359F8"/>
+<path d="M43.4766 43.5469C43.4766 41.5352 43.9648 39.709 44.9414 38.0684C45.9375 36.4277 47.2656 35.1191 48.9258 34.1426C50.5859 33.1465 52.4219 32.6484 54.4336 32.6484H65.1855C66.8848 32.6484 68.3398 33.2539 69.5508 34.4648C70.7617 35.6758 71.3672 37.1309 71.3672 38.8301V63.3516C71.3672 65.3633 70.8691 67.1992 69.873 68.8594C68.8965 70.5195 67.5781 71.8379 65.918 72.8145C64.2578 73.8105 62.4219 74.3086 60.4102 74.3086H45.4395V68.127H60.3223C61.6699 68.127 62.8125 67.6582 63.75 66.7207C64.707 65.8027 65.1855 64.6895 65.1855 63.3809V38.8301H54.4336C53.125 38.8301 52.002 39.2988 51.0645 40.2363C50.127 41.1543 49.6582 42.2773 49.6582 43.6055V52.0137C49.6582 53.3223 50.127 54.4551 51.0645 55.4121C52.002 56.3496 53.125 56.8184 54.4336 56.8184H61.6699V63H54.4336C52.4219 63 50.5859 62.5117 48.9258 61.5352C47.2656 60.5391 45.9375 59.2207 44.9414 57.5801C43.9648 55.9199 43.4766 54.084 43.4766 52.0723V43.5469ZM78.3984 32.6484H84.5801V51.9551C84.5801 53.3223 85.0488 54.4844 85.9863 55.4414C86.9238 56.3984 88.0469 56.877 89.3555 56.877H100.107V32.6484H106.289V56.8477C106.289 58.5469 105.684 60.002 104.473 61.2129C103.262 62.4043 101.787 63 100.049 63H89.3555C87.3438 63 85.5078 62.5117 83.8477 61.5352C82.1875 60.5391 80.8594 59.2109 79.8633 57.5508C78.8867 55.8906 78.3984 54.0547 78.3984 52.043V32.6484ZM112.617 24.3867C112.617 23.332 112.988 22.4336 113.73 21.6914C114.473 20.9492 115.371 20.5781 116.426 20.5781C117.48 20.5781 118.379 20.9492 119.121 21.6914C119.863 22.4336 120.234 23.332 120.234 24.3867C120.234 25.4414 119.863 26.3398 119.121 27.082C118.379 27.8242 117.48 28.1953 116.426 28.1953C115.371 28.1953 114.473 27.8242 113.73 27.082C112.988 26.3398 112.617 25.4414 112.617 24.3867ZM113.32 32.6484H119.531V63H113.32V32.6484ZM126.562 21.3398H132.744V63H126.562V21.3398ZM139.805 21.3398H145.986V32.6484H155.537C157.646 32.6484 159.561 33.1465 161.279 34.1426C163.018 35.1191 164.395 36.4375 165.41 38.0977C166.445 39.7383 166.963 41.5645 166.963 43.5762V63H160.781V43.6641C160.781 42.375 160.254 41.252 159.199 40.2949C158.164 39.3184 156.943 38.8301 155.537 38.8301H145.986V63H139.805V21.3398ZM174.023 38.918C174.023 37.1797 174.658 35.7051 175.928 34.4941C177.197 33.2637 178.721 32.6484 180.498 32.6484H193.154C194.775 32.6484 196.24 33.0488 197.549 33.8496C198.877 34.6309 199.932 35.6953 200.713 37.043C201.514 38.3711 201.914 39.8457 201.914 41.4668V42.3164C201.914 43.918 201.514 45.3828 200.713 46.7109C199.932 48.0195 198.877 49.0742 197.549 49.875C196.24 50.6562 194.775 51.0469 193.154 51.0469H183.721V44.8945H193.213C193.916 44.8945 194.512 44.6406 195 44.1328C195.508 43.625 195.762 43.0098 195.762 42.2871V41.4668C195.762 40.7246 195.508 40.0996 195 39.5918C194.512 39.084 193.916 38.8301 193.213 38.8301H180.205V54.416C180.205 55.0801 180.43 55.6465 180.879 56.1152C181.328 56.584 181.875 56.8184 182.52 56.8184H199.775V63H182.52C180.957 63 179.531 62.6191 178.242 61.8574C176.953 61.0762 175.928 60.041 175.166 58.752C174.404 57.4434 174.023 56.0078 174.023 54.4453V38.918ZM208.652 41.1445C208.652 39.582 209.043 38.1562 209.824 36.8672C210.625 35.5781 211.68 34.5527 212.988 33.791C214.316 33.0293 215.781 32.6484 217.383 32.6484H224.15V38.8008H217.383C216.68 38.8008 216.074 39.0449 215.566 39.5332C215.078 40.002 214.834 40.5781 214.834 41.2617V63H208.652V41.1445ZM229.746 38.8301C229.746 37.1309 230.352 35.6758 231.562 34.4648C232.773 33.2539 234.238 32.6484 235.957 32.6484H245.215C247.715 32.6484 249.766 33.4297 251.367 34.9922C252.93 33.4297 254.98 32.6484 257.52 32.6484H262.09C264.102 32.6484 265.938 33.1465 267.598 34.1426C269.258 35.1191 270.576 36.4375 271.553 38.0977C272.549 39.7383 273.047 41.5645 273.047 43.5762V63H266.895V43.6641C266.895 42.3164 266.426 41.1738 265.488 40.2363C264.551 39.2793 263.418 38.8008 262.09 38.8008H257.52C256.66 38.8008 255.928 39.0742 255.322 39.6211C254.717 40.1484 254.414 40.793 254.414 41.5547V63H248.232V41.5547C248.232 40.793 247.939 40.1484 247.354 39.6211C246.768 39.0742 246.055 38.8008 245.215 38.8008H235.928V63H229.746V38.8301ZM280.078 38.918C280.078 37.1797 280.713 35.7051 281.982 34.4941C283.252 33.2637 284.775 32.6484 286.553 32.6484H299.209C300.83 32.6484 302.295 33.0488 303.604 33.8496C304.932 34.6309 305.986 35.6953 306.768 37.043C307.568 38.3711 307.969 39.8457 307.969 41.4668V42.3164C307.969 43.918 307.568 45.3828 306.768 46.7109C305.986 48.0195 304.932 49.0742 303.604 49.875C302.295 50.6562 300.83 51.0469 299.209 51.0469H289.775V44.8945H299.268C299.971 44.8945 300.566 44.6406 301.055 44.1328C301.562 43.625 301.816 43.0098 301.816 42.2871V41.4668C301.816 40.7246 301.562 40.0996 301.055 39.5918C300.566 39.084 299.971 38.8301 299.268 38.8301H286.26V54.416C286.26 55.0801 286.484 55.6465 286.934 56.1152C287.383 56.584 287.93 56.8184 288.574 56.8184H305.83V63H288.574C287.012 63 285.586 62.6191 284.297 61.8574C283.008 61.0762 281.982 60.041 281.221 58.752C280.459 57.4434 280.078 56.0078 280.078 54.4453V38.918Z" fill="#F8F8F2"/>
+<path d="M331.663 69.36C331.103 69.44 330.563 69.48 330.043 69.48C329.523 69.52 329.043 69.54 328.603 69.54C326.923 69.54 325.623 69.18 324.703 68.46C323.823 67.74 323.383 66.58 323.383 64.98C323.383 63.9 323.543 62.82 323.863 61.74C324.183 60.62 324.463 59.64 324.703 58.8L335.263 20.7C335.863 20.62 336.423 20.58 336.943 20.58C337.463 20.54 337.943 20.52 338.383 20.52C339.983 20.52 341.243 20.86 342.163 21.54C343.123 22.22 343.603 23.32 343.603 24.84C343.603 26 343.443 27.1 343.123 28.14C342.803 29.18 342.503 30.22 342.223 31.26L331.663 69.36Z" fill="#66F859"/>
+</svg>
+      </a>
+
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir menu">
+        Menu
+      </button>
+
+      <nav aria-label="Navegação principal">
+        <ul id="mainNav">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn-primary desktop-cta" href="#contato">Contratar</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Disponível para freelances</span>
+          <h1>Transformo ideias em produtos web que geram resultado.</h1>
+          <p>Sou Guilherme Assunção, Desenvolvedor FullStack com 5 anos de experiência em projetos web. Entrego soluções rápidas, escaláveis e com foco claro no seu negócio.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projetos">Ver Projetos</a>
+            <a class="btn btn-ghost" href="#contato">Falar comigo</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="section" id="sobre">
+      <div class="container grid-2">
+        <div>
+          <span class="eyebrow">Sobre</span>
+          <h2>FullStack orientado a execução e valor.</h2>
+          <p>Há 5 anos desenvolvo soluções web com foco em resolver problemas reais. Atuo de ponta a ponta em web apps, APIs, dashboards, landing pages e integrações, sempre com prioridade em qualidade técnica e velocidade de entrega.</p>
+        </div>
+        <article class="card">
+          <h3>Como eu trabalho</h3>
+          <p class="flow">Briefing objetivo → priorização do que gera impacto → desenvolvimento limpo e iterativo → entrega validada com você.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <span class="eyebrow">Skills</span>
+        <h2>Tecnologias para construir com consistência.</h2>
+        <div class="skills-grid" style="margin-top: 1rem;">
+          <article class="card skill-col">
+            <h3>Frontend</h3>
+            <div class="skills-list">
+              <span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">Flexbox</span><span class="chip">Grid</span><span class="chip">SASS</span><span class="chip">Bootstrap</span><span class="chip">JavaScript ES6</span><span class="chip">jQuery</span><span class="chip">Vue.js</span><span class="chip">NPM</span>
+            </div>
+          </article>
+          <article class="card skill-col">
+            <h3>Backend</h3>
+            <div class="skills-list">
+              <span class="chip">PHP</span><span class="chip">Laravel</span>
+            </div>
+          </article>
+          <article class="card skill-col">
+            <h3>Boas práticas</h3>
+            <div class="skills-list">
+              <span class="chip">Testes</span><span class="chip">SOLID</span><span class="chip">Clean Code</span><span class="chip">Performance</span><span class="chip">Integrações</span>
+            </div>
+          </article>
+          <article class="card skill-col">
+            <h3>Espaço para referências visuais</h3>
+            <p>Estrutura pronta para receber imagens de projetos, mockups ou cases.</p>
+            <div class="placeholder-image">.skills-reference-image / .case-thumb / .mockup-placeholder</div>
+          </article>
+        </div>
+
+        <div class="snippet" aria-label="Trecho de código demonstrativo">
+<code>const projeto = {
+  objetivo: "aumentar conversão",
+  stack: ["Vue.js", "Laravel", "API"],
+  resultado: "entrega rápida com UX clara e código sustentável"
+};</code>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projetos">
+      <div class="container">
+        <span class="eyebrow">Projetos</span>
+        <h2>Estrutura pronta para seus cases reais.</h2>
+        <div class="projects-grid" style="margin-top: 1rem;">
+          <article class="card project-card">
+            <h3>LeadBoost Landing</h3>
+            <p>Problema: baixa taxa de conversão em campanha paga. Solução: landing page otimizada com teste de variações e CTA estratégico.</p>
+            <div class="stack"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JS</span></div>
+            <p style="margin-top:.65rem;">Resultado: aumento de 32% na geração de leads qualificados.</p>
+            <div class="actions"><a class="btn btn-ghost" href="#">Ver detalhes</a><a class="btn btn-primary" href="#">Código</a></div>
+            <div class="placeholder-image">.project-cover / .project-shot (placeholder para imagem)</div>
+          </article>
+
+          <article class="card project-card">
+            <h3>DashFlow CRM</h3>
+            <p>Problema: equipe sem visibilidade dos indicadores. Solução: dashboard com filtros e visão em tempo real para operação comercial.</p>
+            <div class="stack"><span class="chip">Vue.js</span><span class="chip">Laravel</span><span class="chip">MySQL</span></div>
+            <p style="margin-top:.65rem;">Resultado: redução de 40% no tempo de análise semanal.</p>
+            <div class="actions"><a class="btn btn-ghost" href="#">Ver detalhes</a><a class="btn btn-primary" href="#">Código</a></div>
+            <div class="placeholder-image">.project-cover / .project-shot (placeholder para imagem)</div>
+          </article>
+
+          <article class="card project-card">
+            <h3>ConnectAPI Hub</h3>
+            <p>Problema: retrabalho manual entre plataformas. Solução: API de integração para automatizar envio e sincronização de dados.</p>
+            <div class="stack"><span class="chip">PHP</span><span class="chip">Laravel</span><span class="chip">REST</span></div>
+            <p style="margin-top:.65rem;">Resultado: economia de horas operacionais e menos erros manuais.</p>
+            <div class="actions"><a class="btn btn-ghost" href="#">Ver detalhes</a><a class="btn btn-primary" href="#">Código</a></div>
+            <div class="placeholder-image">.project-cover / .project-shot (placeholder para imagem)</div>
+          </article>
+
+          <article class="card project-card">
+            <h3>StorePanel Admin</h3>
+            <p>Problema: gestão desorganizada de catálogo e pedidos. Solução: painel com CRUD completo, permissões e fluxo de aprovação.</p>
+            <div class="stack"><span class="chip">Vue.js</span><span class="chip">Laravel</span><span class="chip">Bootstrap</span></div>
+            <p style="margin-top:.65rem;">Resultado: operação mais estável e tomada de decisão mais rápida.</p>
+            <div class="actions"><a class="btn btn-ghost" href="#">Ver detalhes</a><a class="btn btn-primary" href="#">Código</a></div>
+            <div class="placeholder-image">.project-cover / .project-shot (placeholder para imagem)</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="servicos">
+      <div class="container">
+        <span class="eyebrow">Serviços</span>
+        <h2>O que posso desenvolver para o seu projeto.</h2>
+        <div class="services-grid" style="margin-top:1rem;">
+          <article class="card service-card"><h3>Landing pages rápidas e bem feitas</h3><p>Páginas focadas em conversão, performance e leitura clara da sua oferta.</p></article>
+          <article class="card service-card"><h3>Sistemas web (painéis, dashboards, CRUDs)</h3><p>Ferramentas sob medida para operação, gestão e ganho de produtividade.</p></article>
+          <article class="card service-card"><h3>APIs e integrações</h3><p>Conexão entre plataformas para automatizar processos e reduzir retrabalho.</p></article>
+          <article class="card service-card"><h3>Manutenção e evolução de sistemas</h3><p>Melhorias contínuas com foco em estabilidade, segurança e crescimento do produto.</p></article>
+        </div>
+        <p class="flow">Como funciona: briefing rápido → execução com checkpoints → entrega validada. Prazo e qualidade são combinados com transparência, sem promessas irreais.</p>
+      </div>
+    </section>
+
+    <section class="section" id="diferenciais">
+      <div class="container">
+        <span class="eyebrow">Diferenciais</span>
+        <h2>Parceria técnica com comunicação simples.</h2>
+        <div class="differentials" style="margin-top:1rem;">
+          <article class="card diff-card"><span class="dot" aria-hidden="true"></span><div><h3>Comunicação clara</h3><p>Você entende status, próximos passos e prioridades sem ruído.</p></div></article>
+          <article class="card diff-card"><span class="dot" aria-hidden="true"></span><div><h3>Código limpo e sustentável</h3><p>Projeto organizado para facilitar manutenção e evolução.</p></div></article>
+          <article class="card diff-card"><span class="dot" aria-hidden="true"></span><div><h3>Foco no negócio</h3><p>Tecnologia aplicada para resolver problema e gerar impacto.</p></div></article>
+          <article class="card diff-card"><span class="dot" aria-hidden="true"></span><div><h3>Responsividade e UX</h3><p>Experiência consistente do mobile ao desktop, com leitura fluida.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contato">
+      <div class="container grid-2">
+        <div>
+          <span class="eyebrow">Contato</span>
+          <h2>Tem um projeto web em mente? Vamos conversar.</h2>
+          <p>Se você precisa de alguém para tirar uma ideia do papel ou evoluir um produto existente, me chame.</p>
+          <div class="contact-links" aria-label="Links de contato">
+            <a class="link-chip" href="#" aria-label="Abrir WhatsApp">WhatsApp</a>
+            <a class="link-chip" href="#" aria-label="Enviar email">Email</a>
+            <a class="link-chip" href="#" aria-label="Abrir LinkedIn">LinkedIn</a>
+            <a class="link-chip" href="#" aria-label="Abrir GitHub">GitHub</a>
+          </div>
+        </div>
+
+        <form class="card" aria-label="Formulário de contato">
+          <div>
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" required placeholder="Seu nome" />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="seu@email.com" />
+          </div>
+          <div>
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" required placeholder="Conte em poucas linhas o que você precisa."></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Enviar mensagem</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Guilherme Assunção. Todos os direitos reservados.</p>
+      <div class="footer-links" aria-label="Links principais do rodapé">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#skills">Skills</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mainNav = document.getElementById('mainNav');
+    const year = document.getElementById('year');
+
+    year.textContent = new Date().getFullYear();
+
+    menuBtn?.addEventListener('click', () => {
+      const isOpen = mainNav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    mainNav?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('open');
+        menuBtn?.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>
