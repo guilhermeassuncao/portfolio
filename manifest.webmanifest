@@ -1,0 +1,10 @@
+{
+  "name": "Guilherme Assunção | Desenvolvedor Web em São Mateus ES",
+  "short_name": "Guilherme Dev",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0c12",
+  "theme_color": "#0d0c12",
+  "lang": "pt-BR",
+  "description": "Desenvolvedor FullStack em São Mateus ES com foco em sites, sistemas web, APIs e integrações"
+}
